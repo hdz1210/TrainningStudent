@@ -1,0 +1,53 @@
+﻿@model IEnumerable<TrainningStudent.Models.Staff>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_DashBoard.cshtml";
+}
+<br />
+<h2>Manage Staffs</h2>
+<hr />
+<p>@Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-large" })</p>
+
+<div class="card-body">
+    <table class="table" id="datatablesSimple">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Address
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StaffEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }, htmlAttributes: new { @class = "btn btn-danger col-md-3" })
+                    @Html.ActionLink("Details", "Details", new { id = item.StaffID }, htmlAttributes: new { @class = "btn btn-danger col-md-3" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.StaffID }, htmlAttributes: new { @class = "btn btn-danger col-md-3" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

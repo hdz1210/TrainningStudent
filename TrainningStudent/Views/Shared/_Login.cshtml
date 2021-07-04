@@ -1,0 +1,27 @@
+﻿@if (Request.IsAuthenticated)
+{
+
+<ul class="nav navbar-right btn btn-primary btn-large">
+
+    <li>@Html.ActionLink("Logout", "Logout", "Authentic")</li>
+    
+</ul>
+
+
+
+    if (User.IsInRole("Trainer"))
+    {
+@Html.Partial("_TrainerMenu");
+    }
+    else if (User.IsInRole("Admin"))
+    {
+@Html.Partial("_AdminMenu");
+    }
+}
+else
+{
+<ul class="nav navbar-right btn btn-primary btn-large">
+    <li>@Html.ActionLink("Login", "Login", "Authentic")</li>
+    
+</ul>
+}
